@@ -183,10 +183,8 @@ public class FunctionSignatures extends ArrayList<FunctionSignature> {
 //			else {
 //				new FunctionSignatures(comparison, iSignature, cSignature, fSignature);
 //			}
-		// First, we use the operator itself (in this case the Punctuator ADD) as the key.
-		// Then, we give that key two signatures: one an (INT x INT -> INT) and the other
-		// a (FLOAT x FLOAT -> FLOAT).  Each signature has a "whichVariant" parameter where
-		// I'm placing the instruction (ASMOpcode) that needs to be executed.
+		// We use Punctuator ADD as the key, and give it 2 signatures: (INT x INT -> INT) and (FLOAT x FLOAR -> FLOAT).
+		//Each signature has a ‘whichVariant’ parameter where the instruction that needs to be executed is placed
 		//
 		// I'll follow the convention that if a signature has an ASMOpcode for its whichVariant,
 		// then to generate code for the operation, one only needs to generate the code for
@@ -197,10 +195,10 @@ public class FunctionSignatures extends ArrayList<FunctionSignature> {
 		//		(generate argument 2)   : ditto
 		//		FAdd					: just one instruction
 		//
-		// If the code that an operator should generate is more complicated than this, then
-		// I will not use an ASMOpcode for the whichVariant.  In these cases I typically use
-		// a small object with one method (the "Command" design pattern) that generates the
-		// required code.
+		// If the generated code by an operator is more complicated than this,
+		// don’t use ASMOpcode for whichVriant. In these cases a small object with
+		// one method (the "Command" design pattern) that generates the required
+		// code is usually used.
 
 	}
 }
