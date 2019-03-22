@@ -76,7 +76,7 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		return ch;
 	}
 	
-	
+	//scans comment for char ch
 	private Token scanComment(LocatedChar ch) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(ch.getCharacter());
@@ -89,7 +89,7 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		
 		return findNextToken();
 	}
-	
+	//scans strong for char ch
 	private Token scanString(LocatedChar ch) {
 		StringBuffer buffer = new StringBuffer();	
 		
@@ -106,7 +106,7 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		
 		return StringToken.make(ch.getLocation(), buffer.toString());
 	}
-	
+	//scans character for char ch
 	private Token scanCharacter(LocatedChar ch) {
 		LocatedChar aChar = input.next();
 		LocatedChar c = input.next();
@@ -118,7 +118,7 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		return CharacterToken.make(ch.getLocation(), aChar.getCharacter().toString());
 	}
 
-
+	//scans number for char ch’
 	private Token scanNumber(LocatedChar ch) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(ch.getCharacter());
