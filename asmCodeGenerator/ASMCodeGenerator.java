@@ -72,7 +72,7 @@ public class ASMCodeGenerator {
 
 
 		////////////////////////////////////////////////////////////////////
-        // Make the field code refer to a new fragment of different sort
+        // Make the field "code" refer to a new fragment of different sorts.
 		private void newAddressCode(ParseNode node) {
 			code = new ASMCodeFragment(GENERATES_ADDRESS);
 			codeMap.put(node, code);
@@ -85,8 +85,8 @@ public class ASMCodeGenerator {
 			code = new ASMCodeFragment(GENERATES_VOID);
 			codeMap.put(node, code);
 		}
-
-        // Map is going to generate code and we get it from there.
+	////////////////////////////////////////////////////////////////////
+        // Get code from the map.
 		private ASMCodeFragment getAndRemoveCode(ParseNode node) {
 			ASMCodeFragment result = codeMap.get(node);
 			codeMap.remove(result);
@@ -111,7 +111,8 @@ public class ASMCodeGenerator {
 			return frag;
 		}
 		
-        // Code -> value generating code
+	////////////////////////////////////////////////////////////////////////////////
+        // Convert code to value-generating code.
 		private void makeFragmentValueCode(ASMCodeFragment code, ParseNode node) {
 			assert !code.isVoid();
 			
@@ -173,7 +174,7 @@ public class ASMCodeGenerator {
 
 
 		///////////////////////////////////////////////////////////////////////////
-
+		// Statements and declarations
 		public void visitLeave(PrintStatementNode node) {
 			newVoidCode(node);
 			new PrintStatementGenerator(code, this).generate(node);	
@@ -239,7 +240,7 @@ public class ASMCodeGenerator {
 		
 
 		///////////////////////////////////////////////////////////////////////////
-		// expressions for iteration 1
+		// expressions
 		public void visitEnter(BinaryOperatorNode node) {
 			if (node.isBooleanOperator() && !(node.getParent() instanceof BinaryOperatorNode)) {
 				new Labeller("boolean");
