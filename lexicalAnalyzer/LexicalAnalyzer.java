@@ -219,7 +219,7 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 			appendSubsequentCharacters(buffer);
 	
 			String lexeme = buffer.toString();
- 
+ 			//if identifier exceeds 32 characters
 			if(lexeme.length() > 32) {
 				lexicalErrorWithIdentifier(lexeme);
 				return findNextToken();
