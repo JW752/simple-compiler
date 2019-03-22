@@ -173,11 +173,6 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		
 		return FloatingToken.make(ch.getLocation(), buffer.toString());
 	}
-
-	private void lexicalErrorWithIdentifier(String lexeme) {
-		PikaLogger log = PikaLogger.getLogger("compiler.lexicalAnalyzer");
-		log.severe("Lexical error: variable name '" + lexeme + "' is greater than 32 characters.");
-	}
 	
 	private boolean isNumber(LocatedChar lc) {
 		LocatedChar next = input.peek();
@@ -191,11 +186,6 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		} else {
 			return PunctuatorScanner.scan(ch, input);
 		}
-	}
-	
-	private void lexicalError(LocatedChar ch) {
-		PikaLogger log = PikaLogger.getLogger("compiler.lexicalAnalyzer");
-		log.severe("Lexical error: invalid character " + ch);
 	}
 	
 	
@@ -292,6 +282,17 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		return lc == LocatedCharStream.FLAG_END_OF_INPUT;
 	}
 	
+	//////////////////////////////////////////////////////////////////////////////
+	// Error-reporting	
+
+	private void lexicalError(LocatedChar ch) {
+		PikaLogger log = PikaLogger.getLogger("compiler.lexicalAnalyzer");
+		log.severe("Lexical error: invalid character " + ch);
+	}
+	private void lexicalErrorWithIdentifier(String lexeme) {
+		PikaLogger log = PikaLogger.getLogger("compiler.lexicalAnalyzer");
+		log.severe("Lexical error: variable name '" + lexeme + "' is greater than 32 characters.");
+	}
 	
 	
 }
