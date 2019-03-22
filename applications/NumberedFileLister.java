@@ -18,7 +18,7 @@ public class NumberedFileLister extends PikaApplication {
 	}
 
 	
-	/* prints a file specified by filename to the given PrintStream.
+	/** prints a file specified by filename to the given PrintStream.
 	 *  Each line of the file is preceded by its one-based line number.
 	 * @param filename the name of the file to be listed.
 	 * @param out the PrintStream to list to.
