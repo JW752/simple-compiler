@@ -67,7 +67,7 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 		}
 	}
 
-
+	// locate next char that is not a white space’
 	private LocatedChar nextNonWhitespaceChar() {
 		LocatedChar ch = input.next();
 		while(ch.isWhitespace()) {
