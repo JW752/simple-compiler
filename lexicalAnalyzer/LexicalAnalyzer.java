@@ -31,7 +31,7 @@ public class LexicalAnalyzer extends ScannerImp implements Scanner {
 
 	
 	//////////////////////////////////////////////////////////////////////////////
-	//Main dispatch that finds tokens
+	//token-finding main dispatch
 
 	@Override
 	protected Token findNextToken() {
